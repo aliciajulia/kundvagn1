@@ -16,8 +16,20 @@ if (!isset($_SESSION["kundis"])){
     $_SESSION["kundis"] = array();
 }
 
+if (isset($_GET["kill"])){
+    session_destroy();
+    header("Location:?");
+}
 
 
+if (isset($_GET["prod1"])){
+    for ($i = 0; $i < count("prod1"); $i++) {
+        
+    }
+    $_SESSION["kundis"][]=array("id"=>$_GET["prod1"], "antal"=>$_GET["antal"] );
+}
+
+var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,10 +38,11 @@ if (!isset($_SESSION["kundis"])){
         <title>Kundvagn</title>
     </head>
     <body>
+        <a href="?kill">kill it</a>
         <div class="varor">
             <form>
                 Cykel
-                <input type="number" value="1"> 
+                <input type="number" value="1" name="antal"> 
                 <input type="submit" value="Lägg till"> 
                 <input type="hidden" value="cykel" name="prod1">
             </form>
@@ -39,7 +52,7 @@ if (!isset($_SESSION["kundis"])){
                 Kattunge
                 <input type="number" value="1"> 
                 <input type="submit" value="Lägg till"> 
-                <input type="hidden" value="katunge" name="prod1">
+                <input type="hidden" value="kattunge" name="prod1">
             </form>
         </div>
         <div class="varor">
